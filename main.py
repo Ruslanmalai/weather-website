@@ -8,6 +8,7 @@ Created on Sun Feb 16 22:37:37 2020
 from pprint import pprint as pp
 from flask import Flask, flash, redirect, render_template, request, url_for
 from weather import query_api
+import os
 
 app = Flask(__name__)
 
@@ -33,6 +34,8 @@ def result():
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
 
 
